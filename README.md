@@ -1,6 +1,12 @@
 # LazyCred
 Minimalistic implementation of credential/secret storage using AWS S3 and KMS.
 
+## Installation
+
+```bash
+pip install git+git://github.com/2deviant/LazyCred.git
+```
+
 ## Command Line
 
 **Set a value from a file**:
