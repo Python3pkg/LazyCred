@@ -65,7 +65,7 @@ lazycred.aws_config = {
 
 ```json
 {
-    "region": "us-east-1"
+    "region": "us-east-1",
     "s3_path": "eFart/credentials/",
     "key_alias": "eFart-key",
 }
