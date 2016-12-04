@@ -110,19 +110,19 @@ To counteract low retrieval speed, one may store all of the secrets as one JSON 
 
 ### Mechanism Of Action
 ```python
-// this is your secret
+# this is your secret
 secret = 'The gold is at the post office.'
 
-// this is a high quality random sequence of bytes
+# this is a high quality random sequence of bytes
 password = random_bytes()
 
-// this is your secret encrypted with a high quality password
+# this is your secret encrypted with a high quality password
 encrypted_secret = encrypt(secret, password)
 
-// this is a high quality password encrypted with a black box
+# this is a high quality password encrypted with a black box
 encrypted_key = aws_kms_encrypt(key)
 
-// this is the data stored in S3
+# this is the data stored in S3
 cipherblob = {
 	"data": encrypted_secret,
 	"key": encrypted_key
