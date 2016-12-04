@@ -8,7 +8,7 @@ if __name__ == '__main__':
     # ensure the correct number of command line arguments
     if len(sys.argv) <= 2:
         print(
-            "Usage:\n\tlazycred.py <operation> <operand> [file]\n\n"
+            "Usage:\n\tlazycred <operation> <operand> [file]\n\n"
             "Operations:\n"
             "\tget - get the credentials stored under a key\n"
             "\t      identified by [operand]\n"
