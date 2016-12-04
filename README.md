@@ -12,24 +12,24 @@ pip install git+git://github.com/2deviant/LazyCred.git
 **Set a value from a file**:
 
 ```bash
-~> lazycred.py put db_credentials db_creds.json
+~> lazycred put db_credentials db_creds.json
 ```
 
 **From standard input**:
 
 ```bash
-~> lazycred.py put db_credentials < db_creds.json
+~> lazycred put db_credentials < db_creds.json
 ```
 or
 
 ```bash
-~> cat db_creds.json | lazycred.py put db_credentials
+~> cat db_creds.json | lazycred put db_credentials
 ```
 
 **Get the value**:
 
 ```bash
-~> lazycred.py get db_credentials
+~> lazycred get db_credentials
 ```
 
 ## Python
@@ -125,7 +125,7 @@ Boto v2 is implemented.  AWS credentials are sourced from their default location
 In case of any error, be it configuration, communication, or cryptography, **get** returns `None`, and **put** returns `False`.  In such case, error is logged with all available details via Python's `logging` module:
 
 ```bash
-> ./lazycred.py get SpaceBalls
+> ./lazycred get SpaceBalls
 ERROR:LazyCredLogger:Unable to get <Key: eFart,credentials/SpaceBalls>.
 ```
 If your application has a log collector, it will sweep up LazyCred's errors.
