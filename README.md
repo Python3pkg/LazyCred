@@ -126,7 +126,7 @@ Boto v2 is implemented.  AWS credentials are sourced from their default location
 In case of any error, be it configuration, communication, or cryptography, **get** returns `None`, and **put** returns `False`.  In such case, error is logged with all available details via Python's `logging` module:
 
 ```bash
-> ./lazycred get SpaceBalls
+> lazycred get SpaceBalls
 ERROR:LazyCredLogger:Unable to get <Key: eFart,credentials/SpaceBalls>.
 ```
 If your application has a log collector, it will sweep up LazyCred's errors.
