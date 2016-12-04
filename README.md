@@ -124,8 +124,8 @@ encrypted_key = aws_kms_encrypt(key)
 
 # this is the data stored in S3
 cipherblob = {
-	"data": encrypted_secret,
-	"key": encrypted_key
+	'data': encrypted_secret,
+	'key': encrypted_key
 	}
 ```
 
