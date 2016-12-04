@@ -4,6 +4,12 @@ Minimalistic implementation of credential/secret storage using AWS S3 and KMS.
 ## Installation
 
 ```bash
+pip install lazycred
+```
+
+or, if PyPi is down:
+
+```bash
 pip install git+git://github.com/2deviant/LazyCred.git
 ```
 
