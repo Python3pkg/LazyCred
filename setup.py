@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='lazycred',
-    version='0.1.0',
+    version='0.2.1',
     description='Minimalistic Credentials Manager based on AWS.',
     author='Val Tenyotkin',
     author_email='val@tenyotk.in',
