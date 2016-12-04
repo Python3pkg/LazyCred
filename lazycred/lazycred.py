@@ -268,3 +268,9 @@ def put(key, data):
             return True
     return False
 
+def set_config(config):
+    """
+    Override system configuration.
+    """
+    global aws_config
+    aws_config = config
