@@ -150,12 +150,6 @@ Outside of Python's pre-packaged libraries:
 * Boto
 * cryptography
 
-To install:
-
-```bash
-pip install boto cryptography
-```
-
 ### Boto
 Boto v2 is implemented.  AWS credentials are sourced from their default locations.  For more information, see [Boto Documentaiton](http://boto.cloudhackers.com/en/latest/boto_config_tut.html).
 
