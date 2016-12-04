@@ -107,6 +107,37 @@ LazyCrypt relies on two remote, distinct services: S3 and KMS.  S3 is optimized 
 To counteract low retrieval speed, one may store all of the secrets as one JSON blob.
 
 ## Shop
+
+### Mechanism Of Action
+```python
+// this is your secret
+secret = 'The gold is at the post office.'
+
+// this is a high quality random sequence of bytes
+password = random_bytes()
+
+// this is your secret encrypted with a high quality password
+encrypted_secret = encrypt(secret, password)
+
+// this is a high quality password encrypted with a black box
+encrypted_key = aws_kms_encrypt(key)
+
+// this is the data stored in S3
+cipherblob = {
+	"data": encrypted_secret,
+	"key": encrypted_key
+	}
+```
+
+The `secret` can be recovered:
+
+```python
+secret = decrypt(
+    cipherblob['data'],
+    aws_kms_decrypt(cipherblob['key'])
+    )
+```
+
 ### Dependencies
 Outside of Python's pre-packaged libraries:
 
