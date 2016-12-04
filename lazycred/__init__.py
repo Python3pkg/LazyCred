@@ -1,1 +1,1 @@
-from lazycred import get, put, aws_config
+from lazycred import get, put, set_config

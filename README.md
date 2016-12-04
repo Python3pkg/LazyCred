@@ -54,11 +54,11 @@ Only available inside Python:
 ```python
 import lazycred
 
-lazycred.aws_config = {
-    "region": "us-east-1"
+lazycred.set_config({
     "s3_path": "eFart/credentials/",
     "key_alias": "eFart-key",
-    }
+    "region": "us-east-1"
+    })
 ```
 
 * `s3_path` refers to the S3 bucket `eFart` and folder `credentials/`.  Folder is not require however, `s3_path` must at least contain the bucket followed by `/`.
