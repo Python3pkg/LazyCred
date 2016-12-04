@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 LazyCred
 """
@@ -10,7 +8,6 @@ from cryptography.fernet import Fernet
 import json
 import logging
 import os
-import sys
 
 LAZYCRED_LOG_NAME = 'LazyCredLogger'
 LOCAL_CONFIG_FILE = '.lazycred'
@@ -271,33 +268,3 @@ def put(key, data):
             return True
     return False
 
-if __name__ == '__main__':
-
-    # ensure the correct number of command line arguments
-    if len(sys.argv) <= 2:
-        print(
-            "Usage:\n\tlazycred.py <operation> <operand> [file]\n\n"
-            "Operations:\n"
-            "\tget - get the credentials stored under a key\n"
-            "\t      identified by [operand]\n"
-            "\tput - put the credentials from the standard\n"
-            "\t      input or [file] under a key identified by [operand]\n"
-            )
-        exit(1)
-
-    # process command line arguments
-    operation, operand = sys.argv[1:3]
-
-    if operation == 'put':
-        if len(sys.argv) > 3:
-            with open(sys.argv[3], 'r') as stream:
-                data = stream.read()
-        else:
-            data = sys.stdin.read()
-        put(operand, data)
-    elif operation == 'get':
-        result = get(operand)
-        if result:
-            print(result)
-    else:
-        print("Unrecognized operation {!r}.".format(operation))

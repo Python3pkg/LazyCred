@@ -8,5 +8,5 @@ setup(
     author_email='val@tenyotk.in',
     url='https://github.com/2deviant/LazyCred',
     packages=['lazycred'],
-    scripts=['lazycred/lazycred.py']
+    scripts=['bin/lazycred']
 )
