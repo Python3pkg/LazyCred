@@ -7,7 +7,8 @@ Minimalistic implementation of credential/secret storage using AWS S3 and KMS.
 pip install git+git://github.com/2deviant/LazyCred.git
 ```
 
-## Command Line
+## Use
+### Command Line
 
 **Set a value from a file**:
 
@@ -32,7 +33,7 @@ or
 ~> lazycred get db_credentials
 ```
 
-## Python
+### Python
 ```python
 import lazycred
 
@@ -43,7 +44,7 @@ lazycred.put(key, val)
 print(lazycred.get(key))
 ```
 
-### Note
+#### Note
 Secrets stored from [inside Python](sample.py) are accessible to the command line, and *vice versa*, of coruse.
 
 ## Configuration
@@ -91,22 +92,22 @@ LazyCred will attempt to source the values from environment variables if `.lazyc
 * `LAZYCRED_KEY_ALIAS`
 * `AWS_DEFAULT_REGION`
 
-# Requirements
+## Requirements
 1. AWS Account
 1. AWS S3 bucket in the nether region (regionless)
 2. AWS KMS key
 
-# Potential Issues
-## Speed
+## Potential Issues
+### Speed
 ![](slow.jpg)
 
 LazyCrypt relies on two remote, distinct services: S3 and KMS.  S3 is optimized for bulk storage and fast downloads, not rock-bottom latency.  Add to that the transit time for your request and payload return, add to that the same for KMS.  What results is a function that is best not called from a tight loop.  Recommended use is at the start of an application.
 
-### Blob Storage
+#### Blob Storage
 To counteract low retrieval speed, one may store all of the secrets as one JSON blob.
 
-# Shop
-## Dependencies
+## Shop
+### Dependencies
 Outside of Python's pre-packaged libraries:
 
 * Boto
@@ -118,10 +119,10 @@ To install:
 pip install boto cryptography
 ```
 
-## Boto
+### Boto
 Boto v2 is implemented.  AWS credentials are sourced from their default locations.  For more information, see [Boto Documentaiton](http://boto.cloudhackers.com/en/latest/boto_config_tut.html).
 
-## Error Handling
+### Error Handling
 In case of any error, be it configuration, communication, or cryptography, **get** returns `None`, and **put** returns `False`.  In such case, error is logged with all available details via Python's `logging` module:
 
 ```bash
@@ -130,7 +131,7 @@ ERROR:LazyCredLogger:Unable to get <Key: eFart,credentials/SpaceBalls>.
 ```
 If your application has a log collector, it will sweep up LazyCred's errors.
 
-## Storage
+### Storage
 Data is stored at an S3 path specified in the configuration suffixed with the key name.  A typical record looks like so:
 
 ```json
@@ -141,10 +142,10 @@ Data is stored at an S3 path specified in the configuration suffixed with the ke
 ```
 Where `data` is the payload and `key` is the KMS-encrypted random Fernet key.  AWS KMS decrypts the `key`, then the decrypted key decrypts the `data`.  One may note that `key_alias` is not specified, that is because the reference to the KMS key is encoded in the `key` cipherblob.
 
-## Intermediary Key
+### Intermediary Key
 One may wonder why not encrypt the data directly with KMS.  AWS KMS is limited to a 4KB payload.  While most credential store items are less than 4KB, that limit is by no means guaranteed.  A common practice is to encrypt an arbitrary amount of data with a random, fixed-size key, and then encrypt the key with KMS (same protocol as PGP).  Both methods produce cryptographically equivalent results provided that both use equivalent encryption methods.
 
-## Code Penmanship
+### Code Penmanship
 An astute coder notices that this small application encompasses the following four concepts:
 
 * Key, as it pertains to key-value store nature of LazyCred;
