@@ -119,7 +119,7 @@ def _get_aws_config():
         for key in required_variables
         }
 
-    if None in configuration.viewvalues():
+    if None in configuration.values():
         logger.error(
             'Unable to find configuration in environment variable(s).'
             )
